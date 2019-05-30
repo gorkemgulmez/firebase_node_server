@@ -1,0 +1,101 @@
+
+<style>
+/*https://codepen.io/atakan/pen/gqbIz*/
+/*basic reset*/
+* {margin: 0; padding: 0;}
+
+html {
+	height: 100%;
+	/*Image only BG fallback*/
+
+	/*background = gradient + image pattern combo*/
+	background: linear-gradient(rgba(196, 102, 0, 0.6), rgba(155, 89, 182, 0.6));
+}
+
+/*form styles*/
+#msform {
+	width: 400px;
+	margin: 50px auto;
+	text-align: center;
+	position: relative;
+}
+#msform fieldset {
+	background: white;
+	border: 0 none;
+	border-radius: 3px;
+	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+	padding: 20px 30px;
+	box-sizing: border-box;
+	width: 80%;
+	margin: 0 10%;
+
+	/*stacking fieldsets above each other*/
+	position: relative;
+}
+/*Hide all except first fieldset*/
+#msform fieldset:not(:first-of-type) {
+	display: none;
+}
+/*inputs*/
+#msform input, #msform textarea {
+	padding: 15px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	margin-bottom: 10px;
+	width: 100%;
+	box-sizing: border-box;
+	font-family: montserrat;
+	color: #2C3E50;
+	font-size: 13px;
+}
+#msform select {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    width: 100%;
+    font-size: 13px;
+}
+
+/*headings*/
+.fs-title {
+	font-size: 15px;
+	text-transform: uppercase;
+	color: #2C3E50;
+	margin-bottom: 10px;
+}
+.fs-subtitle {
+	font-weight: normal;
+	font-size: 13px;
+	color: #666;
+	margin-bottom: 20px;
+}
+</style>
+<script>
+function checkLength(el) {
+  if (el.value.length == 0) {
+    alert("Alan boş bırakılamaz");
+  }
+}
+</script>
+<html>
+<meta charset="utf-8" http-equiv="Content-type" content="text/html; charset=utf-8">
+<body>
+	<form id="msform" method="post" action="/postreklam" enctype="application/x-www-form-urlencoded">
+        <fieldset>
+    	    <h1 class="fs-title">Yeni Bir Kampanya Girin</h1>
+          <h2 class="fs-subtitle">Boş Alanlar Kabul Edilmeyecektir</h2>
+          <input onblur="checkLength(this)" type="text" placeholder="Firma Adı" name="fName" maxlength="150" minlength="1">
+          <input onblur="checkLength(this)" type="text" placeholder="Lat" name="fLat" maxlength="150" minlength="1">
+          <input onblur="checkLength(this)" type="text" placeholder="Long" name="fLong" maxlength="150" minlength="1">
+          <select name="fType">
+              <option value="giyim">Giyim</option>
+              <option value="yemek">Yemek</option>
+              <option value="spor">Spor</option>
+		  </select>
+          <input type="date" name="fDate" >
+        	<input type="submit" value="Gönder">
+        </fieldset>
+	</form>
+</body>
+</html>
